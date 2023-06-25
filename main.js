@@ -1,36 +1,43 @@
-const speech = new SpeechSynthesisUtterance();
+let speech = new SpeechSynthesisUtterance();
+
 let voices = [];
 
-function populateVoices() {
-  voices = speechSynthesis.getVoices();
+let voiceSelect = document.querySelector("select");
 
-  const voiceSelect = document.getElementById('voiceSelect');
-  voiceSelect.innerHTML = '';
-
-  voices.forEach((voice, index) => {
-    const option = document.createElement('option');
-    option.value = index;
-    option.textContent = voice.name;
-    voiceSelect.appendChild(option);
+window.addEventListener("load", (event) => {
+    loadVoices()
   });
 
-  // Set the initial voice
+window.speechSynthesis.onvoiceschanged = () => {
+  voices = window.speechSynthesis.getVoices();
   speech.voice = voices[0];
-  voiceSelect.value = 0;
-}
 
-// Wait for the voices to be loaded
-speechSynthesis.onvoiceschanged = populateVoices;
+  voices.forEach(
+    (voice, i) => (voiceSelect.options[i] = new Option(voice.name, i))
 
-// Handle voice selection change
-document.getElementById('voiceSelect').addEventListener('change', () => {
-  const selectedVoiceIndex = document.getElementById('voiceSelect').value;
-  speech.voice = voices[selectedVoiceIndex];
+  );
+  
+};
+
+
+
+voiceSelect.addEventListener("change", () => {
+  speech.voice = voices[voiceSelect.value];
 });
 
-// Handle speak button click
-document.getElementById('speakButton').addEventListener('click', () => {
-  const text = document.querySelector('textarea').value;
-  speech.text = text;
-  speechSynthesis.speak(speech);
+document.querySelector("button").addEventListener("click", () => {
+  speech.text = document.querySelector("textarea").value;
+  window.speechSynthesis.speak(speech);
 });
+
+
+function loadVoices() {
+    const synth = window.speechSynthesis
+    voices = synth.getVoices();
+    for (let i = 0; i < voices.length; i++) {
+      const option = document.createElement("option");
+      option.textContent = `${voices[i].name} (${voices[i].lang})`;
+      option.value = i;
+      voiceSelect.appendChild(option);
+    }
+}  
