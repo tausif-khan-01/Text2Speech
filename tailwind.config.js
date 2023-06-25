@@ -12,7 +12,7 @@ export default {
         
       },
       backgroundImage: {
-        'icon-down': "url('./public/down-arrow.svg')",
+        'icon-down': "url('/down-arrow.svg')",
         
       }
       
