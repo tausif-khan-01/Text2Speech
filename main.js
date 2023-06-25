@@ -5,8 +5,8 @@ let voices = [];
 let voiceSelect = document.querySelector("select");
 
 window.addEventListener("load", (event) => {
-    loadVoices()
-  });
+  loadVoices();
+});
 
 window.speechSynthesis.onvoiceschanged = () => {
   voices = window.speechSynthesis.getVoices();
@@ -14,12 +14,8 @@ window.speechSynthesis.onvoiceschanged = () => {
 
   voices.forEach(
     (voice, i) => (voiceSelect.options[i] = new Option(voice.name, i))
-
   );
-  
 };
-
-
 
 voiceSelect.addEventListener("change", () => {
   speech.voice = voices[voiceSelect.value];
@@ -30,14 +26,14 @@ document.querySelector("button").addEventListener("click", () => {
   window.speechSynthesis.speak(speech);
 });
 
-
 function loadVoices() {
-    const synth = window.speechSynthesis
-    voices = synth.getVoices();
-    for (let i = 0; i < voices.length; i++) {
-      const option = document.createElement("option");
-      option.textContent = `${voices[i].name} (${voices[i].lang})`;
-      option.value = i;
-      voiceSelect.appendChild(option);
-    }
-}  
+  const synth = window.speechSynthesis;
+  voices = synth.getVoices();
+  for (let i = 0; i < voices.length; i++) {
+    const option = document.createElement("option");
+    option.textContent = `${voices[i].name} (${voices[i].lang})`;
+    option.value = i;
+    voiceSelect.appendChild(option);
+    option.style.backgroundColor = "rgba(255, 255, 255, 00.5)";
+  }
+}
