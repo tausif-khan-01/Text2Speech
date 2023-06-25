@@ -10,7 +10,12 @@ export default {
         'nunito': ['Nunito', 'sans-serif'],
         'poppins': ['Poppins', 'sans-serif'],
         
+      },
+      backgroundImage: {
+        'icon-down': "url('./public/down-arrow.svg')",
+        
       }
+      
     },
   },
   plugins: [],

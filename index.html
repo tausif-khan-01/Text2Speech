@@ -5,36 +5,49 @@
     <link rel="stylesheet" href="index.css" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+
     <title>Text to Speech</title>
+    <style></style>
   </head>
+
   <body
-    class="container mx-auto flex h-[100dvh] flex-col items-center justify-center bg-gradient-to-r from-blue-700 to-purple-700"
-  >
-    <main class="flex flex-col gap-3 lg:min-w-fit">
-      <h1 class="text-center font-nunito text-2xl font-extrabold text-white">
+    class="container mx-auto flex h-[100dvh] flex-col items-center justify-center bg-gradient-to-tr from-blue-700 to-purple-700 bg-cover bg-no-repeat font-poppins">
+    <main class="flex flex-col gap-3 items-center justify-center">
+      <h1 class="text-center text-3xl md:text-4xl font-bold text-white">
         Text to Speech
+        <span class="text-rose-600 "
+          >converter</span
+        >
       </h1>
+
       <textarea
         name=""
         id=""
         rows="10"
-        class="w-[90vw] rounded-md p-4 opacity-25"
-        placeholder="write your text here.."
-      >
-        sjlkajdhflikj
-      </textarea>
-      <div class="flex justify-between gap-3">
+        class="w-[90vw] rounded-md bg-white bg-opacity-25 p-3 text-white outline-none placeholder:text-white sm:w-[75vw] md:w-[50vw] lg:p-4"
+        placeholder="write anything here..."
+      ></textarea>
+
+      <div class="flex flex-col gap-3  md:flex-row md:justify-between lg:gap-4">
+        <select
+          name="cars"
+          id="cars"
+          class="area flex-1 text-xs appearance-none rounded-full bg-[#ffffff48] bg-icon-down bg-no-repeat p-2 text-black outline-none"
+          style="
+            background-position-x: calc(100% - 10px);
+            background-position-y: 45%;
+          "
+        ></select>
         <button
-          class="area grow rounded-full bg-white bg-opacity-25 py-2 font-bold text-white"
+          class="flex items-center justify-center gap-1 rounded-full bg-rose-600 px-5 py-2 text-white"
         >
-          English
-        </button>
-        <button
-          class=" rounded-full bg-blue-700 px-4 py-2 font-bold text-white"
-        >
-          Speak
+          <img src="./public/play.svg" alt="" />
+          Listen
         </button>
       </div>
     </main>
+
+    <script src="./main.js" type="module"></script>
   </body>
 </html>
